@@ -4,70 +4,178 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cast — RGB control for HyperX QuadCast 2 S</title>
-  <meta name="description" content="A native macOS menubar app for controlling the lighting on the HyperX QuadCast 2 S microphone. 15+ effects, time-of-day color, audio-reactive modes." />
+  <meta name="description" content="Menubar app for controlling the lighting on the HyperX QuadCast 2 S microphone on macOS." />
+  <link rel="icon" href="icon.png" type="image/png" />
   <style>
     :root {
-      color-scheme: light dark;
-      --fg: #1a1a1a;
-      --muted: #555;
-      --bg: #fafafa;
-      --accent: #6e3cff;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root { --fg: #f0f0f0; --muted: #aaa; --bg: #0c0c12; --accent: #b290ff; }
+      color-scheme: dark;
+      --bg: #0a0a14;
+      --bg-glow: #1a0d2e;
+      --fg: #f0f0f5;
+      --muted: #8a8a99;
+      --pink: #ff4d8f;
+      --purple: #8c4dff;
+      --cyan: #4dc4ff;
+      --grad: linear-gradient(135deg, #ff4d8f 0%, #8c4dff 55%, #4dc4ff 100%);
+      --grad-soft: linear-gradient(135deg, rgba(255,77,143,0.16) 0%, rgba(140,77,255,0.16) 55%, rgba(77,196,255,0.16) 100%);
     }
     * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
     body {
-      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
       color: var(--fg);
       background: var(--bg);
-      margin: 0;
-      padding: 4rem 1.5rem;
+      background-image:
+        radial-gradient(900px circle at 50% -10%, rgba(140, 77, 255, 0.18), transparent 60%),
+        radial-gradient(700px circle at 110% 30%, rgba(255, 77, 143, 0.10), transparent 60%);
+      min-height: 100vh;
+      padding: 5rem 1.5rem 4rem;
+      -webkit-font-smoothing: antialiased;
     }
-    main { max-width: 640px; margin: 0 auto; }
-    h1 { font-size: 2.4rem; margin: 0 0 0.4rem; letter-spacing: -0.02em; }
-    .tagline { color: var(--muted); margin: 0 0 2.5rem; font-size: 1.15rem; }
+    main {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .icon {
+      width: 144px;
+      height: 144px;
+      border-radius: 32px;
+      filter: drop-shadow(0 0 50px rgba(255, 77, 143, 0.25))
+              drop-shadow(0 0 80px rgba(77, 196, 255, 0.18));
+      margin-bottom: 1.75rem;
+    }
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 0.6rem;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1;
+    }
+    .tagline {
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin: 0 0 2rem;
+      font-weight: 400;
+    }
     .download {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: var(--accent);
+      gap: 0.55rem;
+      background: var(--grad);
       color: white;
-      padding: 0.9rem 1.6rem;
+      padding: 0.95rem 1.8rem;
       border-radius: 999px;
       text-decoration: none;
       font-weight: 600;
       font-size: 1.05rem;
+      letter-spacing: -0.005em;
+      box-shadow: 0 8px 30px rgba(140, 77, 255, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .download:hover { filter: brightness(1.08); }
-    .meta { color: var(--muted); font-size: 0.9rem; margin-top: 0.8rem; }
-    h2 { font-size: 1.2rem; margin-top: 3rem; }
-    ul { padding-left: 1.2rem; }
-    li { margin: 0.3rem 0; }
-    footer { color: var(--muted); margin-top: 4rem; font-size: 0.9rem; }
-    a { color: var(--accent); }
+    .download:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 40px rgba(140, 77, 255, 0.5);
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 0.9rem;
+    }
+    section {
+      margin-top: 3.5rem;
+    }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 1rem;
+    }
+    p {
+      margin: 0 0 1rem;
+    }
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .features li {
+      padding: 0.9rem 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .features li:last-child { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .features strong {
+      color: var(--fg);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .features span {
+      color: var(--muted);
+    }
+    footer {
+      margin-top: 4rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font: 0.85em ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      background: rgba(255,255,255,0.05);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
   <main>
-    <h1>Cast</h1>
-    <p class="tagline">Native macOS lighting control for the HyperX QuadCast 2 S microphone.</p>
+    <header>
+      <img class="icon" src="icon.png" alt="Cast app icon" />
+      <h1>Cast</h1>
+      <p class="tagline">Light up your HyperX QuadCast 2 S from the macOS menubar.</p>
 
-    <!-- Update the version number and filename when you publish a new release -->
-    <a class="download" href="Cast-1.0.dmg">Download Cast 1.0</a>
-    <div class="meta">macOS 14 (Sonoma) or newer · Universal binary · Notarized</div>
+      <!-- Update version + filename on each release -->
+      <a class="download" href="Cast-1.0.1.dmg">Download Cast 1.0.1</a>
+      <div class="meta">macOS 14 (Sonoma) or newer · Universal binary · Notarized</div>
+    </header>
 
-    <h2>What it does</h2>
-    <ul>
-      <li><strong>15 lighting effects</strong> across Colors, Patterns, Scenes, and Audio-reactive categories</li>
-      <li><strong>Time-of-day color</strong> — lighting drifts with the actual time</li>
-      <li><strong>Audio-reactive modes</strong> (EQ, Prism, VU, Waterfall) react to your mic input in real time</li>
-      <li>Lives in the menubar, no Dock icon</li>
-      <li>Hot-plug aware — connects automatically when you plug in</li>
-    </ul>
+    <section>
+      <h2>What you get</h2>
+      <ul class="features">
+        <li>
+          <strong>Fifteen lighting effects</strong>
+          <span>Sorted across Colors, Patterns, Scenes, and Audio. Click a tile to switch.</span>
+        </li>
+        <li>
+          <strong>Time-of-day color</strong>
+          <span>Any single-color effect can drift with the actual time. Warm at sunrise, neutral at midday, amber at dusk. I leave this on most days.</span>
+        </li>
+        <li>
+          <strong>Four audio-reactive modes</strong>
+          <span>EQ, Prism, VU Meter, and Spectrum Waterfall. They read your mic input in real time.</span>
+        </li>
+        <li>
+          <strong>Stays out of the way</strong>
+          <span>Menubar only, no Dock icon. Picks up the mic the moment you plug it in.</span>
+        </li>
+      </ul>
+    </section>
 
-    <h2>Privacy</h2>
-    <p>Cast doesn't collect or transmit any data. The microphone permission, when used by audio-reactive modes, processes audio locally to compute frequency bands — nothing is recorded, stored, or sent anywhere.</p>
+    <section>
+      <h2>Privacy</h2>
+      <p>No analytics. No telemetry. Audio for the reactive modes runs through an FFT in memory. Nothing is recorded, nothing leaves the machine.</p>
+    </section>
 
     <footer>
       <p>Auto-updates via <a href="https://sparkle-project.org">Sparkle</a>. Feed: <a href="appcast.xml">appcast.xml</a>.</p>

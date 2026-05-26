@@ -14,20 +14,37 @@
       build/appcast-entry-<version>.xml. Copy it in here, commit, push.
     -->
 
-    <!-- EXAMPLE — replace with real entries:
     <item>
-      <title>Version 1.0</title>
-      <sparkle:version>1.0</sparkle:version>
-      <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+      <title>Version 1.0.1</title>
+      <sparkle:version>1.0.1</sparkle:version>
+      <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <pubDate>Mon, 25 May 2026 12:00:00 -0400</pubDate>
+      <pubDate>Tue, 26 May 2026 11:28:37 -0400</pubDate>
+      <description><![CDATA[
+<html>
+<body style="font-family: -apple-system, system-ui; font-size: 13px; line-height: 1.55; color: #1a1a1a; padding: 6px 10px;">
+
+<h2 style="margin: 0 0 8px; font-size: 16px;">Cast 1.0.1</h2>
+
+<p>The first time you run Cast it now opens automatically and explains what permissions it needs before macOS asks. The system dialogs only fire when you click the in-app "Grant" buttons, not as a surprise.</p>
+
+<p>The mic returns to dark when you quit, instead of staying stuck on whatever was last showing.</p>
+
+<p>Switching to an audio-reactive mode (EQ, Prism, VU Meter, Spectrum Waterfall) no longer crashes the app. The visualizations also follow your system default input now &mdash; change the active mic in Sound preferences and the lighting tracks the new device.</p>
+
+<p>Right-click the menubar icon for a quick context menu (Settings, About, Check for Updates, Quit). The same menu is also behind the gear in the main panel.</p>
+
+<p>Three smaller things: the menubar icon now matches the app icon's "C" mark, the entire "Advanced" row toggles instead of just the chevron, and the popover stays open while you're picking a color.</p>
+
+</body>
+</html>
+      ]]></description>
       <enclosure
-        url="https://terracatta.github.io/cast-updates/Cast-1.0.dmg"
-        length="12345678"
+        url="https://terracatta.github.io/cast-updates/Cast-1.0.1.dmg"
         type="application/octet-stream"
-        sparkle:edSignature="..." />
+        length="3716952"
+        sparkle:edSignature="NZLhj5tSGuivcNo8GF9wmbxDxeoUJ0bl/29AYbYpMk3UzlvMCtvZ0ctR+kOD8qm27NFreCIihC9H9ENb4wC+AA==" />
     </item>
-    -->
 
   </channel>
 </rss>
