@@ -15,6 +15,30 @@
     -->
 
     <item>
+      <title>Version 1.0.2</title>
+      <sparkle:version>1.0.2</sparkle:version>
+      <sparkle:shortVersionString>1.0.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <pubDate>Tue, 26 May 2026 16:05:48 -0400</pubDate>
+      <description><![CDATA[
+<html>
+<body style="font-family: -apple-system, system-ui; font-size: 13px; line-height: 1.55; color: #1a1a1a; padding: 6px 10px;">
+
+<h2 style="margin: 0 0 8px; font-size: 16px;">Cast 1.0.2</h2>
+
+<p>Fixed occasional flickering (white or black flashes) on Macs running EDR software.</p>
+
+</body>
+</html>
+      ]]></description>
+      <enclosure
+        url="https://terracatta.github.io/cast-updates/Cast-1.0.2.dmg"
+        type="application/octet-stream"
+        length="3727729"
+        sparkle:edSignature="1dkotJbjJKOGmzopm6e4jb0aN1dBcYuTZYJHS1npFFFdDMGzE7ROzbw+J68ZjyFxK5T4yWImlr7ed3d1f+kHBA==" />
+    </item>
+
+    <item>
       <title>Version 1.0.1</title>
       <sparkle:version>1.0.1</sparkle:version>
       <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
